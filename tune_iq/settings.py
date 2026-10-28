@@ -15,7 +15,18 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import os
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://tune-iq-ewsh.onrender.com",
+]
+
+if os.environ.get("RENDER_EXTERNAL_HOSTNAME"):
+    host = os.environ["RENDER_EXTERNAL_HOSTNAME"]
+    origin = f"https://{host}"
+
+    if origin not in CSRF_TRUSTED_ORIGINS:
+        CSRF_TRUSTED_ORIGINS.append(origin)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -23,7 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-tize4u#lo1ti@^(ll!e+1uoxtx(ye7)6)c69il%!pf@n5@f6rk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
