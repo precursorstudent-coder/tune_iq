@@ -3,17 +3,121 @@
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const listeningStorageKey = "VoiceNavigationEnabled";
-    const routes = [
-        { path: "/", phrases: ["home", "home page", "homepage", "main page"] },
-        { path: "/about/", phrases: ["about", "about us", "about page"] },
-        { path: "/faq/", phrases: ["faq", "faqs", "frequently asked questions", "faq page"] },
-        { path: "/contact/", phrases: ["contact", "contact us", "contact page"] },
-        { path: "/registration/", phrases: ["registration", "register", "register customer", "registration"] },
-        { path: "/login/", phrases: ["login", "sign in", "login "] },
-        { path: "/feedback/", phrases: ["feedback", "feedback", "feedback page"] },
-        { path: "/admin_login/", phrases: ["admin login", "admin sign in", "login admin"] },
-       
-    ];
+   const routes = [
+    // Public Pages
+    {
+        path: "/",
+        phrases: ["home", "home page", "homepage", "main page"]
+    },
+    {
+        path: "/about/",
+        phrases: ["about", "about us", "about page"]
+    },
+    {
+        path: "/contact/",
+        phrases: ["contact", "contact us", "contact page"]
+    },
+    {
+        path: "/faq/",
+        phrases: ["faq", "faqs", "frequently asked questions", "faq page"]
+    },
+    {
+        path: "/login/",
+        phrases: ["login", "sign in", "user login", "user sign in"]
+    },
+    {
+        path: "/registration/",
+        phrases: [
+            "registration",
+            "register",
+            "register customer",
+            "customer registration",
+            "registration page"
+        ]
+    },
+    {
+        path: "/feedback/",
+        phrases: ["feedback", "feedback page", "give feedback", "submit feedback"]
+    },
+
+    // Admin Pages
+    {
+        path: "/admin_login/",
+        phrases: ["admin login", "admin sign in", "login admin", "administrator login"]
+    },
+    {
+        path: "/admin_home/",
+        phrases: ["admin home", "admin homepage", "admin dashboard", "admin panel"]
+    },
+    {
+        path: "/admin_profile/",
+        phrases: ["admin profile", "my admin profile", "administrator profile"]
+    },
+    {
+        path: "/admin_logout/",
+        phrases: ["admin logout", "admin log out", "sign out admin", "logout admin"]
+    },
+
+    // User Pages
+    {
+        path: "/user_home/",
+        phrases: ["user home", "user homepage", "user dashboard", "user panel"]
+    },
+    {
+        path: "/user_profile/",
+        phrases: ["user profile", "my profile", "view profile", "profile page"]
+    },
+    {
+        path: "/user_logout/",
+        phrases: ["user logout", "user log out", "sign out", "log out"]
+    },
+    {
+        path: "/user_edit_profile/",
+        phrases: [
+            "edit profile",
+            "update profile",
+            "change profile",
+            "edit my profile",
+            "update my details"
+        ]
+    },
+
+    // Model Training
+    {
+        path: "/model_training/",
+        phrases: [
+            "model training",
+            "train model",
+            "train the model",
+            "machine learning training"
+        ]
+    },
+
+    // Song Player Pages
+    {
+        path: "/user_songs/",
+        phrases: [
+            "songs",
+            "user songs",
+            "song list",
+            "music library",
+            "show songs",
+            "open songs"
+        ]
+    },
+    {
+        path: "/user_songs/1/",
+        dynamic: true,
+        basePath: "/user_songs/",
+        phrases: [
+            "play song",
+            "play a song",
+            "song player",
+            "open song",
+            "play music"
+        ]
+    }
+];
 
     function cleanCommand(command) {
         return command.toLowerCase()
