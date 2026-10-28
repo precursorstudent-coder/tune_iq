@@ -1,0 +1,6 @@
+Django
+Pillow
+plotly
+scikit-learn
+pandas
+csv
