@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en"> 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    {% include 'tune_app/common/common_css.html' %}
+    <script>
+
+    const alphaRegex = /^[A-Za-z\s]*$/;
+    const numberRegex = /^[0-9]{0,10}$/;
+    function checkAlpha(event) // event is an object
+    {
+      console.log(event)
+      console.log(event.target)//the element on which event is occuring
+      let data = event.target.value//text field ki value
+
+      if (!alphaRegex.test(data)) // this is return me false but false opposite true because ! this expression
+      {
+
+        event.target.value = data.replace(/[^a-zA-Z ]/g, '');
+        alert("Only alphabets are allowed ")
+
+      }
+
+    }//check Alpha Close
+
+
+
+
+    //check digits
+
+
+    function checkDigit(event) {
+
+      let data = event.target.value
+
+      if (!numberRegex.test(data)) {
+
+        event.target.value = data.replace(/[^0-9]/g, '')
+        alert("Only digits are allowed ")
+
+
+      }
+
+    }
+
+  </script>
+
+
+
+    <style>
+        .form-div {
+            width: 35%;
+            height: auto;
+            margin: auto;
+            border:1px solid rgba(255,255,255,0.18);
+            border-radius: 5%;
+            box-shadow:0 20px 60px rgba(0,0,0,0.35);
+            padding: 35px;
+            margin-top: 5%;
+            margin-bottom: 3%;
+            background:rgba(255,255,255,0.06);
+
+        
+        }
+        .form-div:hover {
+            box-shadow: 0 0px 25px #00413d;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'tune_app/common/header.html' %}
+    <div class="main-div">
+
+        
+        <div class="form-div">
+            <h1 style="text-align: center;color: #757474; font-family:'Times New Roman', Times, serif Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-weight: 700;">Register</h1>
+            <hr style="border-top: 2px solid rgb(196, 189, 189); margin: 15px 5px 25px;"> 
+            
+            <form action="/registration/" method="post" style="margin-top:5%;">
+        {% csrf_token %}
+             <div class="input-group mb-3">
+               <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username" name="username" required oninput="checkAlpha(event)">
+              <label for="floatingInputGroup1">Username</label>
+              </div>
+              <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+            </div>
+        <div class="input-group mb-3">
+               <div class="form-floating">
+              <input type="email" class="form-control" id="floatingInputGroup1" placeholder="Email" name="email" required>
+              <label for="floatingInputGroup1">Email</label>
+              </div>
+              <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+            </div>
+        <div class="input-group mb-3">
+               <div class="form-floating">
+              <input type="password" class="form-control" id="floatingInputGroup1" placeholder="Password" name="password" required>  
+              <label for="floatingInputGroup1">Password</label>
+              </div>
+              <span class="input-group-text"><i class="fa-solid fa-unlock-keyhole"></i></span>
+            </div>    
+
+                <div class="form-check">
+                     <input class="form-check-input" type="checkbox" id="autoSizingCheck2" required>
+                     <label class="form-check-label" for="autoSizingCheck2" style="color: #757474;">
+                      Agree to terms & conditions </label>      
+                </div>
+               <div class="text-center mb-3">
+                <button class="btn btn-secondary" style="width: 100%;background-color:#113f3c;">Sign Up</button> <br>
+                <a href="/login/" style="color: #757474; text-decoration: none;">Already have an account? Login</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    {% include 'tune_app/common/footer.html' %}
+
+</body>
+
+</html>
+
+
+
+

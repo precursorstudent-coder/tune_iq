@@ -1,0 +1,42 @@
+
+      
+
+        .profile-card {
+            margin-top: 120px;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 15px 35px rgb(164, 28, 28);
+            position: relative;
+            padding-top: 90px;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid #c46c13;
+            position: absolute;
+            top: -90px;
+            left: 50%;
+            transform: translateX(-50%); 
+            box-shadow: 0 8px 25px rgba(51, 181, 70, 0.745);
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 18px;
+            height: 100%;
+            transition: .3s;
+        }
+
+        .info-box:hover {
+            background: #0d6efd;
+            color: #e509e8;
+        }
+
+        .info-box:hover small {
+            color: #ca3188 !important;
+        }
+  

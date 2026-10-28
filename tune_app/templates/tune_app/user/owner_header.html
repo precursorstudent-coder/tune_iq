@@ -1,0 +1,133 @@
+<!-- owner_header.html -->
+<style>
+
+.owner-link{
+    color:rgb(110, 178, 171) !important;
+    font-size:17px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding:12px 15px !important;
+    border-radius:8px;
+    transition:all 0.3s ease;
+}
+
+
+.owner-link:hover{
+
+    background-color:rgb(149, 180, 167);
+    color:#633a27 !important;
+    transform:translateX(8px);
+
+}
+
+
+.owner-link i{
+    width:25px;
+}
+
+</style>
+<!-- <nav class="navbar navbar-dark fixed-top" style="background-color: #38393a;"> -->
+<nav class="navbar navbar-dark fixed-top" style="background-color: rgba(58, 58, 58, 0.55);">
+
+    <div class="container-fluid">
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#ownerOffcanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="offcanvas offcanvas-start"
+             data-bs-backdrop="false"
+             tabindex="-1"
+             id="ownerOffcanvas"
+             style="background-color: rgba(63, 67, 67, 0.55); backdrop-filter: blur(0%); width:250px;">
+
+
+            <div class="offcanvas-header">
+
+                <h5 class="offcanvas-title" >
+                    <b style="color: rgb(1, 149, 55); font-weight: 250%;">🎧 Your Listening  Hub </b>
+                </h5>
+
+                <button type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="offcanvas">
+                </button>
+
+            </div>
+
+
+            <div class="offcanvas-body">
+
+                <ul class="navbar-nav">
+
+                    <!-- Dashboard -->
+                    <li class="nav-item">
+                        <a class="nav-link owner-link" href="/user_home/">
+                            <i class="fa-solid fa-house"></i>
+                             Home
+                        </a>
+                    </li>
+
+
+                   <!-- Profile -->
+                    <li class="nav-item">
+                        <a class="nav-link owner-link" href="/user_profile/">
+                            <i class="fa-solid fa-user"></i>
+                            Profile
+                        </a>
+                    </li>
+
+                    <!--Edit Profile -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link owner-link" href="/user_edit_profile/">
+                            <i class="fa-solid fa-user"></i>
+                            Edit Profile
+                        </a>
+                    </li> -->
+                    
+                    
+                    <!-- Songs -->
+                    <li class="nav-item">
+                        <a class="nav-link owner-link" href="/user_songs/">
+                            <i class="fa-solid fa-music"></i>
+                            songs
+                        </a>
+                    </li>
+
+
+                    <!-- Feedback -->
+                    <li class="nav-item">
+                        <a class="nav-link owner-link" href="/feedback/">
+                            <i class="fa-solid fa-comments me-2"></i>
+                            Feedback
+                        </a>
+                    </li>
+                    
+                    <!-- Contact Us -->
+                    <li class="nav-item">
+                        <a class="nav-link owner-link" href="/contact/">
+                            <i class="fa-solid fa-envelope"></i>
+                           Contact Us
+                        </a>
+                    </li>
+
+
+                    <!-- Logout -->
+                    <li class="nav-item">
+                        <a class="nav-link owner-link" href="/user_logout/">
+                            <i class="fa-solid fa-right-from-bracket me-2"></i>
+                            Logout
+                        </a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+</nav>

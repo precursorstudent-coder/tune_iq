@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% include 'tune_app/common/common_css.html' %}
+
+    <style>
+        .flex-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            
+        }
+
+        .form-div{
+            width: 28%;
+            height: 50%;
+            border-radius:4%;
+            border:1px solid rgba(255,255,255,0.18);
+            box-shadow:0 20px 60px rgba(0,0,0,0.35);
+            padding: 25px;   
+            margin-top:8%;
+            margin-bottom:5%;
+            background:rgba(255,255,255,0.06);
+
+        }
+        
+        .form-div:hover {
+            box-shadow: 0 0px 25px #00413d;
+            transform: scale(1.02);
+        }
+
+    </style>
+</head>
+<body>
+     {% include 'tune_app/common/header.html' %}
+     {% include 'tune_app/common/message.html' %}
+
+    <div class="main-div">
+        <div class="flex-container">
+        
+            <div class="form-div">
+                <h1 style="text-align: center;color:  #757474; font-family:'Times New Roman', Times, serif Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;margin-bottom: 4%; font-weight: 700;">Login</h1>
+               <hr style="border-top: 2px solid rgb(196, 189, 189); margin: 15px 5px 25px;"> 
+
+            <form action="/login/" method="post">
+    {% csrf_token %}            
+                 <div class="input-group mb-3" style="margin-top: 6%;">
+                 <input type="text" class="form-control" placeholder="Enter Your Email"name="email" required >
+                 <span class="input-group-text"><i class="fa-solid fa-envelope-open"></i></i></span>
+                </div>
+                 
+                 <div class="input-group mb-3">
+                 <input type="password" class="form-control" placeholder="Enter Your Password"name="password" required>
+                 <span class="input-group-text"><i class="fa-solid fa-key"></i></span> 
+                </div>
+
+                <div class="text-center mb-3">
+                <!-- <button class="btn btn-success">Sign In</button> -->
+                <button class="btn btn-secondary"  style="width: 100%;background-color:#113f3c;">Sign In</button> <br>
+                <a href="/registration/" style="color:  #757474; text-decoration: none;">Not a member? Signup now</a>
+                </div>
+            </form>
+            </div>
+        
+        </div>
+
+
+ </div>
+     {% include 'tune_app/common/footer.html' %}
+   
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    {% include 'tune_app/common/common_css.html' %}
+    <style>
+        .form-div {
+            width: 35%;
+            height: auto;
+            margin: auto;
+            border: 3px solid rgb(163, 163, 196);
+            border-radius: 5%;
+            box-shadow: 0px 0px 10px rgb(20, 77, 20);
+            padding: 35px;
+            /* margin-top: 5%; */
+            margin-bottom: 2%;
+
+        }
+
+        .form-div:hover {
+            box-shadow: 0 0px 35px #00413d;
+            transform: scale(1.02);
+        }
+
+
+        :root{
+    --teal: #4ECDC4;
+    --teal-deep: #194643;
+    --ink: #F2F0EA;
+    --ink-dim: #A8A9B4;
+    --line: rgba(255,255,255,0.14);
+    --bg-page-start: #000000;
+    --bg-page-end: #4a4a4a;
+  }
+  /* *{box-sizing:border-box;} */
+  .body{
+    margin:0;
+    font-family:'Inter', sans-serif;
+    background:linear-gradient(to right, var(--bg-page-start), var(--bg-page-end));
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    padding:40px 20px;
+  }
+
+  .faq-card{
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+    max-width:1080px;
+    width:100%;
+    padding:36px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1.6fr;
+    gap:20px;
+    align-items:stretch;
+    margin-top: 2.5%;
+  }
+
+  /* ---- Left: tall portrait image ---- */
+  .faq-portrait{
+    /* border-radius:20px; */
+    overflow:hidden;
+    height:100%;
+  }
+  .faq-portrait img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+
+  /* ---- Middle: two stacked images ---- */
+  .faq-stack{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    height:100%;
+  }
+  .faq-stack img{
+    width:100%; object-fit:cover; display:block;
+  }
+  .faq-stack .top-img{ flex:1; min-height:0; }
+  .faq-stack .bottom-img{ flex:1; min-height:0; }
+
+  /* ---- Right: content ---- */
+  .faq-content{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding-left:8px;
+  }
+  .faq-badge{
+    display:inline-flex;
+    align-items:center;
+    background:var(--teal);
+    color:#06201d;
+    font-size:0.68rem;
+    font-weight:700;
+    letter-spacing:0.04em;
+    padding:6px 14px;
+    border-radius:20px;
+    width:fit-content;
+    margin-bottom:18px;
+  }
+  .faq-content h1{
+    font-size:2rem;
+    font-weight:800;
+    line-height:1.15;
+    letter-spacing:-0.02em;
+    margin:0 0 14px;
+    color:var(--ink);
+  }
+  .faq-content .faq-sub{
+    color:var(--ink-dim);
+    font-size:0.94rem;
+    line-height:1.5;
+    margin:0 0 26px;
+    max-width:420px;
+  }
+
+  .faq-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .faq-item{
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    transition:background .15s;
+  }
+  .faq-item.open{ background:rgba(78,205,196,0.08); border-color:rgba(78,205,196,0.35); }
+
+  .faq-question{
+    width:100%;
+    background:none;
+    border:none;
+    text-align:left;
+    padding:16px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:0.9rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .faq-question:hover{ color:var(--teal); }
+
+  .faq-chevron{
+    flex-shrink:0;
+    transition:transform .25s ease;
+    color:var(--ink-dim);
+  }
+  .faq-item.open .faq-chevron{
+    transform:rotate(180deg);
+    color:var(--teal);
+  }
+
+  .faq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease, padding .3s ease;
+    padding:0 18px;
+  }
+  .faq-item.open .faq-answer{
+    max-height:220px;
+    padding:0 18px 18px;
+  }
+  .faq-answer p{
+    margin:0;
+    font-size:0.86rem;
+    line-height:1.55;
+    color:var(--ink-dim);
+  }
+
+  @media (max-width:900px){
+    .faq-card{
+      grid-template-columns:1fr;
+      padding:24px;
+    }
+    .faq-portrait, .faq-stack{ display:none; }
+  }
+
+  :focus-visible{ outline:2px solid var(--teal); outline-offset:2px; }
+
+</style>
+</head>
+
+<body>
+{% include 'tune_app/common/header.html' %}
+
+<div class="main-div items:center; justify-content:center;">   
+    <div class="faq-card , form-div">
+
+  <div class="faq-portrait">
+    <img src="{% static 'tune_app/images/faq2.jpg' %}" alt="Person listening to music">
+  </div>
+
+  <div class="faq-stack">
+    <div class="top-img">
+      <img src="{% static 'tune_app/images/faq1.jpg' %}" alt="Abstract sound wave texture">
+    </div>
+    <div class="bottom-img" style="margin-top:4px;">
+      <img src="{% static 'tune_app/images/faq5.jpg' %}" alt="Balanced stacked stones">
+    </div>
+  </div>
+
+  <div class="faq-content">
+    <span class="faq-badge">FAQs</span>
+    <h1>Frequently asked<br>questions</h1>
+    <p class="faq-sub">MelodyMatch AI recommends songs using your listening activity. Here are answers to the questions people ask most.</p>
+
+    <div class="faq-list" id="faqList">
+
+      <div class="faq-item open">
+        <button class="faq-question">
+          1.What is MelodyMatch AI?
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>MelodyMatch AI is an AI-powered music recommendation platform that helps users discover songs based on their music preferences, song characteristics, genres, and moods.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          2. Can I get recommendations based on my mood?
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. MelodyMatch AI can provide music recommendations based on different moods such as Romantic, Sad, Happy, Energetic, Dance, Chill, and Calm.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          3. How does MelodyMatch AI decide what to recommend?
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Every song you play is compared against every other song in the library on traits like genre, mood, language, and artist. MelodyMatch AI then finds the closest matches using a K-Nearest Neighbours algorithm and shows you why each one was picked.</p>
+          
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          4. Why do newly added songs get fewer recommendations?
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>This is a known limitation called the "cold start" problem — a brand-new song has little play history or metadata to compare against yet, so it takes some plays before MelodyMatch AI can match it confidently to similar tracks.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          5. Can I tell MelodyMatch AI a recommendation was wrong?
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Use the Feedback page to rate or flag a recommendation — this helps refine future suggestions and is one of the signals the system uses to improve over time.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div> 
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+{% include 'tune_app/common/footer.html' %} 
+
+</body>
+
+</html>

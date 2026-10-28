@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {% include 'tune_app/common/common_css.html' %}
+<style>
+   
+.explore-btn {
+    display: inline-block;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.explore-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(2, 111, 106, 0.5);
+    filter: brightness(1.15);
+}
+
+</style>
+    
+</head>
+<body>
+     {% include 'tune_app/common/header.html' %}
+<div class="main-div">
+
+
+
+<div id="galleryTunnel" style="position:relative; width:100%; height:100%; background: linear-gradient(to right, rgb(0,0,0), rgb(39,38,38));">
+
+    <div style="position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; pointer-events:none;">
+        <h1 style="font-family:'Fraunces', serif; font-size:clamp(2rem, 5vw, 3.2rem); color:#F3F1EA; margin:0 0 18px; max-width:600px; line-height:1.15;">
+            Every Song, Every Story,<br>One Discovery Away
+        </h1>
+        <p style="color:#C9C8D6; font-size:1rem; max-width:480px; margin:0 0 30px;">
+            Explore your music library like never before — matched by mood, genre, and language.
+        </p>
+        <div style="pointer-events:auto; display:flex; gap:14px;">
+        <a href="/registration/" class="explore-btn" style="background: linear-gradient(135deg,#012f2a,#026f6a);
+         color:#ffffff; padding:13px 26px; border-radius:25px; font-weight:600; text-decoration:none;">Explore Library →</a>
+        </div>
+    </div>
+
+</div>
+    
+   
+
+</div>  
+{% include 'tune_app/common/footer.html' %} 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="{% static 'tune_app/js/gallery-tunnel.js' %}"></script>
+<script>
+    initGalleryTunnel('galleryTunnel', {
+        images: [
+            "{% static 'tune_app/images/P1.jpg' %}",
+            "{% static 'tune_app/images/P2.jpg' %}",
+            "{% static 'tune_app/images/P3.jpg' %}",
+            // "{% static 'tune_app/images/P5.jpg' %}",
+            "{% static 'tune_app/images/P6.jpg' %}",
+            "{% static 'tune_app/images/P7.jpg' %}",
+            "{% static 'tune_app/images/P8.jpg' %}",
+            "{% static 'tune_app/images/P9.jpg' %}",
+            "{% static 'tune_app/images/P10.jpg' %}",
+
+
+
+
+
+        ],
+        colors: ["#D60D0D","#1E8104", "#700DBF","#A2AC1C"],
+        lineColor: "#605d5d",
+        
+    });
+</script>
+
+</body>
+</html>
+

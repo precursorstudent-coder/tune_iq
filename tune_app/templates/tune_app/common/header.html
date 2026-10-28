@@ -1,0 +1,130 @@
+{% load static %}
+<style>
+/* Navbar Links */
+.navbar-nav .nav-link {
+    position: relative;
+    display: inline-block;
+    color: #a9a5a5;
+    transition: color 0.3s ease;
+}
+
+/* Hide underline by default */
+.navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 0;
+    height: 2px;
+    background: #d6e3f1; /* Change color if needed */
+    transition: width 0.3s ease;
+}
+
+/* Show underline on hover */
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Remove underline from dropdown toggle */
+.navbar-nav .dropdown-toggle::after {
+    border: none; /* Keeps Bootstrap arrow from conflicting */
+}
+
+.navbar-nav .dropdown-toggle::before,
+.navbar-nav .dropdown-toggle::after {
+    content: none;
+}
+
+/* Dropdown Items */
+.dropdown-menu .dropdown-item {
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.dropdown-menu .dropdown-item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    width: 0;
+    height: 2px;
+    background: #00204f;
+    transition: width 0.3s ease;
+}
+
+.dropdown-menu .dropdown-item:hover::after {
+    width: 100%;
+}
+.nav-link{
+    color: rgb(135, 132, 132) !important ;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 18px !important;
+    
+}
+</style>
+
+<nav class="navbar navbar-expand-lg "style="  background: transparent; box-shadow: none; border-bottom: none;border:1px solid rgba(255, 255, 255, 0.18);
+    background-color: rgba(35, 34, 34, 0.2);">
+
+        <div class="container-fluid">
+            <!-- <a class="navbar-brand" href="#" style="color: rgb(97, 201, 12); font-weight: 600;">MelodyMatch AI</a> -->
+            <a class="navbar-brand d-flex align-items-center" href="/" style="color: rgb(97, 201, 12); font-weight: 600;">
+    <img src="{% static 'tune_app/images/logo.png' %}" alt="MelodyMatch AI Logo" style="height: 35px; margin-right: 8px;">
+    MelodyMatch AI
+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="gap: 10px; text-align:right; margin-right: 4%;">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/"> <i class="fa-regular fa-house"></i>Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about/"><i class="fa-solid fa-circle-info"></i>About</a>
+                    </li>
+
+                     <li class="nav-item">
+                        <a class="nav-link" href="/login/"><i class="fa-solid fa-right-to-bracket"></i>Login</a>
+                    </li>
+
+                  <!-- <li class="nav-item">
+                        <a class="nav-link" href="/registration/"><i class="fa-regular fa-registered"></i>Register</a> 
+                    </li> -->
+                      
+
+                    <!-- <li class="nav-item dropdown" >
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false"><i class="fa-solid fa-right-to-bracket"></i>Login
+                        </a>
+
+                        <ul class="dropdown-menu" style="background-color: rgb(155, 156, 156);color: black;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                            <li><a class="dropdown-item" href="/admin_login/">Admin</a></li>
+                            <li><a class="dropdown-item" href="/login/">User</a></li>
+                        </ul>
+
+                    </li> -->
+                     <li class="nav-item">
+                        <!-- <a class="nav-link" href="/faq/"><i class="fa-regular fa-circle-question"></i>FAQ</a> -->
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+

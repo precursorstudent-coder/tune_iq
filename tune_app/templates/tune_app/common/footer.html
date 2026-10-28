@@ -1,0 +1,78 @@
+<!-- <div style="height: 50px; width: 100%; background-color: rgb(75, 132, 130);color: azure;">
+<span style="margin-left: 45%;">Created by Ashmita Lal</span>
+</div> -->
+
+
+<!-- {% load static %}
+<div class="card text-bg-dark">
+  <img src="{% static 'tune_app/images/note.png' %}"  alt=" ">
+  <div class="card-img-overlay">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small>Last updated 3 mins ago</small></p>
+  </div>
+</div> -->
+
+<style>
+
+.footer-section {
+    background-size:cover;
+    background-position: center;
+    position: relative;
+    min-height: 250px;   /* give the section real height so the image shows fully */
+    color: rgb(213, 205, 205);
+}
+
+.footer-overlay {
+    position: absolute;
+    inset: 0;                          
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+    box-shadow: none;
+    border-bottom: none;
+    border:1px solid rgba(255,255,255,0.18);
+
+
+
+    .footer-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 10px;
+}
+
+.footer-nav-links .nav-link {
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-nav-links .nav-link:hover {
+    border-bottom-color: rgba(255, 255, 255, 0.9);
+    opacity: 0.85;
+}
+          
+}
+
+
+</style>
+{% load static %}
+<div class="footer-section">
+    <div class="footer-overlay">
+        <h5 class="card-title">♪ MelodyMatch AI ♪</h5>
+        <p class="card-text">Finding the perfect soundtrack for your day, one discovery at a time.</p>
+        <p class="card-text"><small>Support • FAQs • Privacy Policy • Terms of Use</small></p>
+
+       <div class="footer-nav-links">
+    <a class="nav-link" href="/registration/"><i class="fa-regular fa-registered"></i> Register</a>
+    <a class="nav-link" href="/faq/"><i class="fa-regular fa-circle-question"></i> FAQ</a>
+    <a class="nav-link" href="/admin_login/"><i class="fa-solid fa-share"></i> Admin</a>
+</div>
+      
+
+    </div>
+</div>

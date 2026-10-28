@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    {% include 'tune_app/common/common_css.html' %}
+
+    <style>
+    .box1{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    text-align: center;
+    position:relative;
+    color: rgb(226, 225, 211) ;
+    margin-top: 2%;
+    background: transparent;
+    box-shadow: none;
+    border-bottom: none;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    background-color: rgba(60, 59, 59, 0.2);
+
+    
+  }
+  .box1-content{
+     position:relative; 
+     z-index:1; 
+     max-width:640px; 
+     padding:20px; 
+  } 
+
+      @keyframes auroraAppear {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes auroraShift {
+        0%   { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+    }
+    .aurora-text {
+        display: inline-block;
+        background-image: linear-gradient(199deg, #4ECDC4, #F2A65A, #4ECDC4);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        opacity: 0;
+        animation:
+            auroraAppear 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+            auroraShift 4s ease-in-out infinite alternate 1s;
+
+        font-weight: 700;
+        font-size:80px;
+        margin-top: 6%;
+    }
+
+    .about-div {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 15px;
+      justify-content: center;
+      gap: 30px;
+
+    }
+
+    .about-card {
+      padding: 50px;
+      width: 350px;
+      height: 350px;
+      margin: 15px;
+      border-radius: 10px;
+      transition: transform 0.5s;
+      box-shadow: 0 8px 16px rgb(13, 71, 67);
+      margin-bottom: 90px;
+      margin-top: 8px;
+      color: rgb(172, 169, 169) ;
+      background-color:rgb(35, 34, 34) ;
+      
+    }
+
+    .about-card:hover {
+      transform: scale(1.1);
+      z-index: 10;
+
+    }
+
+    </style>
+</head>
+<body>
+     {% include 'tune_app/common/header.html' %}
+<div class="main-div">
+
+
+
+<!-- <div id="glitterWrap" style="position:relative; width:100%; height:100vh; display:flex; align-items:center; justify-content:center;"> -->
+    <div id="glitterWrap" style="position:relative; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+     
+
+    <h1 class="aurora-text" style="text-align: center;">MelodyMatch AI</h1>
+
+    <div class="box1">
+        <div class="box1-content">
+        <p style="text-align: center;">AI-Powered Music Recommendation Portal is an intelligent web-based application that simplifies music discovery through Machine Learning-based recommendations. By analyzing song attributes and applying similarity-based algorithms such as K-Nearest Neighbours (KNN), the system provides relevant and personalized song suggestions.
+The application reduces manual searching, improves user engagement, and demonstrates the practical implementation of Machine Learning in recommendation systems. TuneIQ can serve as a useful platform for music streaming applications, entertainment platforms, and digital music libraries seeking intelligent recommendation solutions.
+</p>
+    </div>
+    </div>
+
+    
+    <div class="box1" style="margin-top: 5%; display: flex; flex-wrap: wrap;">
+       <div class="box1-content">   
+     <h3>Three steps. No manual searching.</h3>
+     <p>Under the hood, it's a K-Nearest Neighbours model — but here's what it feels like to use.</p>
+      </div>
+    
+    
+
+    <div class="about-div">
+        <div class="about-card">
+        <h1>◌ Play any song</h1>
+        <p>Pick anything from the library — genre, mood, or language, it doesn't matter where you start.</p>
+        </div>
+
+         <div class="about-card">
+        <h1>◌ We compare traits</h1>
+        <p>Genre, mood, language, and artist are matched against every other song to find your closest neighbours.</p>
+        </div>
+
+        <div class="about-card">
+        <h1>◌ Get matched, transparently</h1>
+        <p>Recommendations show exactly what they matched on — genre, mood, or language — no black box.</p>
+        </div>
+
+    </div> 
+</div>
+
+     <div class="box1" style="margin-bottom: 5%;">
+       <div class="box1-content">   
+     <h3 style="text-align: center; ;">Press play. We'll take it from there.</h3>
+     <p>MelodyMatch AI learns what you love and finds your next favorite song — matched on genre, mood, and language, with the reasoning shown, not hidden.</p>
+     <a href="/login/" class="btn btn-secondary"  style="background-color:#04746f; box-shadow: 0 0px 25px #00413d; transform: scale(1.02);">Get Started →</a>
+      </div>
+    </div>
+
+
+</div>
+   
+
+</div>  
+{% include 'tune_app/common/footer.html' %} 
+
+<script src="{% static 'tune_app/js/glitter-wrap.js' %}"></script>
+
+    <script>
+        initGlitterWrap('glitterWrap', {
+            particleCount: 350,
+           color1: "#f6fffe",
+        color2: "#afb7b6",
+        color3: "#eaccae",
+            speed: 5,
+            density: 100,
+            starSize: 14,
+            focalDepth: 13,
+            turbulence: 5,
+            brightness: 100,
+            glitterIntensity:2,
+            trailAmount: 4,
+            reverse: false
+        });
+    </script>
+
+</body>
+</html>

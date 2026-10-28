@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'tune_app/common/common_css.html' %}
+<title>Songs</title>
+<style>
+
+.song-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: 100px;
+    
+
+}
+.song-card {
+    display: block;
+    border-radius: 18px;
+    box-shadow: 0 16px 40px  #00413d(70, 32, 205, 0.12);
+    padding: 1.25rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    color: inherit;
+    text-decoration: none;
+    background: rgba(64, 63, 63, 0.04);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgb(168, 157, 157);
+
+
+}
+.song-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px #00413d(70, 32, 205, 0.18);
+}
+.song-card-link {
+    cursor: pointer;
+}
+.song-cover {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    height: 200px;
+}
+.song-title {
+    margin: 1rem 0 0.3rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #b6b0b0;
+}
+.song-meta {
+    color: #999696;
+    font-size: 0.95rem;
+    margin-bottom: 0.85rem;
+}
+.audio-controls {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.audio-controls button {
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    background: #00413d;
+    color: rgb(165, 164, 164);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+.audio-controls button:hover {
+    transform: translateY(-1px);
+    background:  #00413d;
+}
+.audio-button.active {
+    background: #ff7f50;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(255, 127, 80, 0.3);
+}
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+.search-input {
+    flex: 1 1 320px;
+    padding: 0.85rem 1rem;
+    border-radius: 999px;
+    border: 1px solid #d3d3e3;
+    outline: none;
+    font-size: 1rem;
+}
+.search-button {
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg,#012f2a,#02968f);
+    
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+.search-button:hover {
+    background: #02423e;
+}
+.search-field-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.search-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+    color: #4f4f6b;
+}
+.search-label input {
+    accent-color: #2a8982;
+}
+.no-songs {
+    margin-top: 120px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #575766;
+}
+</style>
+</head>
+<body>
+    {% include 'tune_app/user/owner_header.html' %}
+
+    <div class="container py-5">
+        <h2 class="text-center mb-4 " style="font-family:Georgia, 'Times New Roman', Times, serif; color: #03837d; margin-top: 2rem; font-weight: 500; font-size:350%;">Melody Vault</h2>
+        <hr style="border-top: 2px solid rgb(196, 189, 189); margin: 15px 5px 25px;"> 
+
+        <form method="get" class="search-form mb-4">
+            <div class="search-field-group">
+                <label class="search-label" style="color: #8f8787;">
+                    <input type="radio" name="search_type" value="name" {% if search_type != 'singer' %}checked{% endif %}>
+                    Song Name
+                </label>
+                <label class="search-label"  style="color: #8f8787;">
+                    <input type="radio" name="search_type" value="singer" {% if search_type == 'singer' %}checked{% endif %}>
+                    Singer Name
+                </label>
+            </div>
+            <input type="text" name="q" value="{{ search_query|default:'' }}" placeholder="Search songs by {{ search_type|default:'name' }}" class="search-input">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+
+        {% if songs %}
+            <div class="song-grid">
+                {% for song in songs %}
+                    <a href="{% url 'user_song_player' song.id %}" class="song-card song-card-link">
+                        <img class="song-cover" src="{{ song.image }}" alt="{{ song.name }}">
+                        <h3 class="song-title">{{ song.name }}</h3>
+                        <div class="song-meta">{{ song.artist }} · {{ song.album }}</div>
+                        <div class="song-meta">Year: {{ song.year }} · Duration: {{ song.duration }} sec</div>
+                        {% if not song.audio_url %}
+                            <div class="song-meta">Preview not available.</div>
+                        {% endif %}
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-songs">No songs were found in the CSV file.</div>
+        {% endif %}
+    </div>
+
+    {% include 'tune_app/common/footer.html' %}
+</body>
+</html>

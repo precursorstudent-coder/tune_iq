@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedBack</title>
+ {% include 'tune_app/common/common_css.html' %}
+  <!-- start script** This script only for form in alpha or number validation -->
+  <script>
+
+    const alphaRegex = /^[A-Za-z\s]*$/;
+    const numberRegex = /^[0-9]{0,10}$/;
+    function checkAlpha(event) // event is an object
+    {
+      console.log(event)
+      console.log(event.target)//the element on which event is occuring
+      let data = event.target.value//text field ki value
+
+      if (!alphaRegex.test(data)) // this is return me false but false opposite true because ! this expression
+      {
+
+        event.target.value = data.replace(/[^a-zA-Z ]/g, '');
+        alert("Only alphabets are allowed ")
+
+      }
+
+    }//check Alpha Close
+
+
+
+
+    //check digits
+
+
+    function checkDigit(event) {
+
+      let data = event.target.value
+
+      if (!numberRegex.test(data)) {
+
+        event.target.value = data.replace(/[^0-9]/g, '')
+        alert("Only digits are allowed ")
+
+
+      }
+
+    }
+
+  </script>
+
+    <style>
+        .form-div {
+            width: 35%;
+            height: auto;
+            margin: auto;
+            border-radius: 4%;
+            padding: 35px;
+            margin-top: 7%;
+            border:1px solid rgba(255,255,255,0.18);
+            box-shadow:0 20px 60px rgba(0,0,0,0.35);
+            background:rgba(255,255,255,0.06);
+            margin-bottom: 2%;
+ 
+        }
+        .form-div:hover {
+            box-shadow: 0 0px 25px #00413d;
+            transform: scale(1.02);
+        }
+
+
+    </style>
+</head>
+
+<body>
+    {% include 'tune_app/user/owner_header.html' %}
+     {% include 'tune_app/common/message.html' %}
+    <div class="main-div">
+
+        
+        <div class="form-div">
+            <h1 style="text-align: center;color: #757474; font-family:'Times New Roman', Times, serif Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-weight: 700;">FeedBack</h1>
+        <hr style="border-top: 2px solid rgb(196, 189, 189); margin: 15px 5px 25px;"> 
+
+            <form action="/feedback/" method="post">
+        {% csrf_token %}        
+             <div class="input-group mb-3" style="margin-top: 18px; filter: drop-shadow(0 0 10px #20160b);">
+               <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Name" name="name" required oninput="checkAlpha(event)">
+              <label for="floatingInputGroup1">Name</label>
+              </div>  
+            </div>
+        <div class="input-group mb-3" style="margin-top: 18px; filter: drop-shadow(0 0 10px #20160b);">
+               <div class="form-floating">
+              <input type="email" class="form-control" id="floatingInputGroup1" placeholder="Email" name="email" required>
+              <label for="floatingInputGroup1">Email</label>
+              </div>
+            </div>
+        
+             <div class="col-mb-3" style="margin-top: 18px; filter: drop-shadow(0 0 10px #20160b);">
+              <!-- <label for="inputState" class="form-label">Select Ranking</label> -->
+              <select id="inputState" class="form-select" name="rating" required>
+                <option value="">Rating</option>
+                <option value="⭐">⭐</option>
+                <option value="⭐⭐">⭐⭐</option>
+                <option value="⭐⭐⭐">⭐⭐⭐</option>
+                <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+              </select>
+            </div>
+
+            <div class="form-floating" style="margin-top: 18px; filter: drop-shadow(0 0 10px #20160b);">
+              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                style="height: 100px" name="reviews" required></textarea>
+              <label for="floatingTextarea2">Reviews</label>
+            </div>
+
+
+               <div class="text-center mb-3" style="margin-top: 5%; ">
+                <button class="btn btn-secondary" style="width: 100%;background-color:#113f3c;">Sign Up</button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+{% include 'tune_app/common/footer.html' %} 
+
+</body>
+
+</html>

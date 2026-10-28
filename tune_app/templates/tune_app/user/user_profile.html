@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Profile</title>
+    {% include 'tune_app/common/common_css.html' %}
+
+    <style>
+        .profile-img {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .text {
+            color: rgb(190, 196, 195);
+            font-size: 20px;
+            font-family: 'Franklin';
+        }
+
+        .label-text {
+            color: rgba(5, 6, 6, 0.864);
+            font-size: 18px;
+            font-family: 'Franklin';
+            
+        }
+        
+        .form-div {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: auto;
+            border: 1px solid rgb(163, 163, 196);
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgb(20, 77, 20);
+            padding: 35px;
+            margin-top: 11%;
+            margin-bottom: 5%;
+            background:rgba(255,255,255,0.06);
+
+        }
+        .form-div:hover {
+            box-shadow: 0 0px 25px #00413d;
+            transform: scale(1.02);
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    {% include 'tune_app/user/owner_header.html' %}
+<div class="main-div">    
+        
+  <div class="form-div">
+      <div class="d-flex align-items-start" style="gap: 10%;">
+
+        <div>
+            <img src="{% static 'tune_app/images/boy.jpg' %}"
+                 class="img-fluid rounded-4 shadow profile-img" alt="Profile">
+        </div>
+
+        <div class=" w-50">
+            
+            <h2 class="fw-bold  mb-3 text-center" style="color: #757474;" >Profile</h2>
+            <hr style="border-top: 2px solid rgb(196, 189, 189); margin: 15px auto 30px; width: 100%;">
+  
+            <div class="mb-3">
+                <label class="label-text" style="color:#5f5e5e;">Username</label>
+                <div class="text">{{ user_info.username }}</div>
+            </div>
+
+            <div class="mb-3">
+                <label class="label-text" style="color:#5f5e5e;">Email</label>
+                <div class="text">{{ user_info.email }}</div>
+            </div>
+        </div>
+
+
+     </div>
+ </div>
+
+</div>  
+
+</body>
+</html>
